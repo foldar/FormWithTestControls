@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblText = new System.Windows.Forms.Label();
-            this.lblInteger = new System.Windows.Forms.Label();
-            this.lblFloat = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblComboBox = new System.Windows.Forms.Label();
-            this.chkMale = new System.Windows.Forms.CheckBox();
-            this.chkFemale = new System.Windows.Forms.CheckBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.txtText = new System.Windows.Forms.TextBox();
-            this.txtInteger = new System.Windows.Forms.TextBox();
-            this.txtFloat = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtFloat = new System.Windows.Forms.TextBox();
+            this.txtInteger = new System.Windows.Forms.TextBox();
+            this.txtText = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.chkFemale = new System.Windows.Forms.CheckBox();
+            this.chkMale = new System.Windows.Forms.CheckBox();
+            this.lblComboBox = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblFloat = new System.Windows.Forms.Label();
+            this.lblInteger = new System.Windows.Forms.Label();
+            this.lblText = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,85 +67,45 @@
             this.panel1.Size = new System.Drawing.Size(530, 331);
             this.panel1.TabIndex = 0;
             // 
-            // lblText
+            // dateTimePicker1
             // 
-            this.lblText.AutoSize = true;
-            this.lblText.Location = new System.Drawing.Point(15, 20);
-            this.lblText.Name = "lblText";
-            this.lblText.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblText.Size = new System.Drawing.Size(38, 13);
-            this.lblText.TabIndex = 0;
-            this.lblText.Text = "Text";
+            this.dateTimePicker1.CustomFormat = "DD-MMM-YYYY";
+            this.dateTimePicker1.Location = new System.Drawing.Point(146, 118);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(130, 20);
+            this.dateTimePicker1.TabIndex = 13;
+            this.dateTimePicker1.Value = new System.DateTime(2022, 11, 28, 0, 0, 0, 0);
             // 
-            // lblInteger
+            // txtFloat
             // 
-            this.lblInteger.AutoSize = true;
-            this.lblInteger.Location = new System.Drawing.Point(18, 50);
-            this.lblInteger.Name = "lblInteger";
-            this.lblInteger.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblInteger.Size = new System.Drawing.Size(50, 13);
-            this.lblInteger.TabIndex = 1;
-            this.lblInteger.Text = "Integer";
+            this.txtFloat.Location = new System.Drawing.Point(142, 81);
+            this.txtFloat.Name = "txtFloat";
+            this.txtFloat.Size = new System.Drawing.Size(135, 20);
+            this.txtFloat.TabIndex = 12;
+            this.txtFloat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFloat_KeyPress);
             // 
-            // lblFloat
+            // txtInteger
             // 
-            this.lblFloat.AutoSize = true;
-            this.lblFloat.Location = new System.Drawing.Point(21, 84);
-            this.lblFloat.Name = "lblFloat";
-            this.lblFloat.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblFloat.Size = new System.Drawing.Size(80, 13);
-            this.lblFloat.TabIndex = 2;
-            this.lblFloat.Text = "Floating point";
+            this.txtInteger.Location = new System.Drawing.Point(142, 50);
+            this.txtInteger.Name = "txtInteger";
+            this.txtInteger.Size = new System.Drawing.Size(135, 20);
+            this.txtInteger.TabIndex = 11;
+            this.txtInteger.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInteger_KeyPress);
             // 
-            // lblDate
+            // txtText
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(20, 118);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblDate.Size = new System.Drawing.Size(40, 13);
-            this.lblDate.TabIndex = 3;
-            this.lblDate.Text = "Date";
+            this.txtText.Location = new System.Drawing.Point(142, 23);
+            this.txtText.Name = "txtText";
+            this.txtText.Size = new System.Drawing.Size(135, 20);
+            this.txtText.TabIndex = 10;
             // 
-            // lblComboBox
+            // comboBox1
             // 
-            this.lblComboBox.AutoSize = true;
-            this.lblComboBox.Location = new System.Drawing.Point(18, 152);
-            this.lblComboBox.Name = "lblComboBox";
-            this.lblComboBox.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblComboBox.Size = new System.Drawing.Size(67, 13);
-            this.lblComboBox.TabIndex = 4;
-            this.lblComboBox.Text = "Combobox";
-            // 
-            // chkMale
-            // 
-            this.chkMale.AutoSize = true;
-            this.chkMale.Location = new System.Drawing.Point(17, 182);
-            this.chkMale.Name = "chkMale";
-            this.chkMale.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.chkMale.Size = new System.Drawing.Size(59, 17);
-            this.chkMale.TabIndex = 5;
-            this.chkMale.Text = "Male";
-            this.chkMale.UseVisualStyleBackColor = true;
-            // 
-            // chkFemale
-            // 
-            this.chkFemale.AutoSize = true;
-            this.chkFemale.Location = new System.Drawing.Point(85, 182);
-            this.chkFemale.Name = "chkFemale";
-            this.chkFemale.Size = new System.Drawing.Size(60, 17);
-            this.chkFemale.TabIndex = 6;
-            this.chkFemale.Text = "Female";
-            this.chkFemale.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(18, 291);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(89, 24);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(147, 152);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(131, 21);
+            this.comboBox1.TabIndex = 9;
             // 
             // btnExit
             // 
@@ -157,43 +117,87 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // comboBox1
+            // btnSave
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(147, 152);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(131, 21);
-            this.comboBox1.TabIndex = 9;
+            this.btnSave.Location = new System.Drawing.Point(18, 291);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(89, 24);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // txtText
+            // chkFemale
             // 
-            this.txtText.Location = new System.Drawing.Point(142, 23);
-            this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(135, 20);
-            this.txtText.TabIndex = 10;
+            this.chkFemale.AutoSize = true;
+            this.chkFemale.Location = new System.Drawing.Point(85, 182);
+            this.chkFemale.Name = "chkFemale";
+            this.chkFemale.Size = new System.Drawing.Size(60, 17);
+            this.chkFemale.TabIndex = 6;
+            this.chkFemale.Text = "Female";
+            this.chkFemale.UseVisualStyleBackColor = true;
+            this.chkFemale.CheckedChanged += new System.EventHandler(this.chkFemale_CheckedChanged);
             // 
-            // txtInteger
+            // chkMale
             // 
-            this.txtInteger.Location = new System.Drawing.Point(142, 50);
-            this.txtInteger.Name = "txtInteger";
-            this.txtInteger.Size = new System.Drawing.Size(135, 20);
-            this.txtInteger.TabIndex = 11;
+            this.chkMale.AutoSize = true;
+            this.chkMale.Location = new System.Drawing.Point(17, 182);
+            this.chkMale.Name = "chkMale";
+            this.chkMale.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.chkMale.Size = new System.Drawing.Size(59, 17);
+            this.chkMale.TabIndex = 5;
+            this.chkMale.Text = "Male";
+            this.chkMale.UseVisualStyleBackColor = true;
+            this.chkMale.CheckedChanged += new System.EventHandler(this.chkMale_CheckedChanged);
             // 
-            // txtFloat
+            // lblComboBox
             // 
-            this.txtFloat.Location = new System.Drawing.Point(142, 81);
-            this.txtFloat.Name = "txtFloat";
-            this.txtFloat.Size = new System.Drawing.Size(135, 20);
-            this.txtFloat.TabIndex = 12;
+            this.lblComboBox.AutoSize = true;
+            this.lblComboBox.Location = new System.Drawing.Point(18, 152);
+            this.lblComboBox.Name = "lblComboBox";
+            this.lblComboBox.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblComboBox.Size = new System.Drawing.Size(67, 13);
+            this.lblComboBox.TabIndex = 4;
+            this.lblComboBox.Text = "Combobox";
             // 
-            // dateTimePicker1
+            // lblDate
             // 
-            this.dateTimePicker1.CustomFormat = "DD-MMM-YYYY";
-            this.dateTimePicker1.Location = new System.Drawing.Point(146, 118);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(130, 20);
-            this.dateTimePicker1.TabIndex = 13;
-            this.dateTimePicker1.Value = new System.DateTime(2022, 11, 28, 0, 0, 0, 0);
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(20, 118);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblDate.Size = new System.Drawing.Size(40, 13);
+            this.lblDate.TabIndex = 3;
+            this.lblDate.Text = "Date";
+            // 
+            // lblFloat
+            // 
+            this.lblFloat.AutoSize = true;
+            this.lblFloat.Location = new System.Drawing.Point(21, 84);
+            this.lblFloat.Name = "lblFloat";
+            this.lblFloat.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblFloat.Size = new System.Drawing.Size(80, 13);
+            this.lblFloat.TabIndex = 2;
+            this.lblFloat.Text = "Floating point";
+            // 
+            // lblInteger
+            // 
+            this.lblInteger.AutoSize = true;
+            this.lblInteger.Location = new System.Drawing.Point(18, 50);
+            this.lblInteger.Name = "lblInteger";
+            this.lblInteger.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblInteger.Size = new System.Drawing.Size(50, 13);
+            this.lblInteger.TabIndex = 1;
+            this.lblInteger.Text = "Integer";
+            // 
+            // lblText
+            // 
+            this.lblText.AutoSize = true;
+            this.lblText.Location = new System.Drawing.Point(15, 20);
+            this.lblText.Name = "lblText";
+            this.lblText.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblText.Size = new System.Drawing.Size(38, 13);
+            this.lblText.TabIndex = 0;
+            this.lblText.Text = "Text";
             // 
             // Form1
             // 
