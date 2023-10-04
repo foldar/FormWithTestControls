@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -51,14 +52,14 @@ namespace FormWithTestControls
             }
         }
 
-        private void txtFloat_LostFocus(object sender, EventArgs e)
+        private void txtFloat_Validating(object sender, CancelEventArgs e)
         {
             TextBox txtObj = sender as TextBox;
-            if (txtObj.Text.StartsWith(".")) { txtObj.Text = "0" + txtObj.Text;}
-            if (txtObj.Text.EndsWith(".")) { txtObj.Text = txtObj.Text.Replace(".","");}
-            string strTemp;
-           //strTemp = txtObj.Left(txtObj.Text.IndexOf("."))//
+            //string strTemp;
+            //strTemp = Convert.ToString(Convert.ToDouble(txtObj.Text));
+            //txtObj.Text = strTemp;
+            if (txtObj.Text.StartsWith(".")) { txtObj.Text = "0" + txtObj.Text; }
+            if (txtObj.Text.EndsWith(".")) { txtObj.Text = txtObj.Text.Replace(".", ""); }
         }
-
     }
 }

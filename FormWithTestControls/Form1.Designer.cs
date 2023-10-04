@@ -83,6 +83,7 @@
             this.txtFloat.Size = new System.Drawing.Size(135, 20);
             this.txtFloat.TabIndex = 12;
             this.txtFloat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFloat_KeyPress);
+            this.txtFloat.Validating += new System.ComponentModel.CancelEventHandler(this.txtFloat_Validating);
             // 
             // txtInteger
             // 
