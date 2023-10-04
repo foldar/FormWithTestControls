@@ -50,5 +50,14 @@ namespace FormWithTestControls
                 e.Handled = true;
             }
         }
+
+        private void txtFloat_LostFocus(object sender, EventArgs e)
+        {
+            TextBox txtObj = sender as TextBox;
+            if (txtObj.Text.StartsWith(".")) { txtObj.Text = "0" + txtObj.Text;}
+            if (txtObj.Text.EndsWith(".")) { txtObj.Text = txtObj.Text.Replace(".","");}
+            string strTemp;
+           // strTemp = txtObj.Left(txtObj.Text.IndexOf(".")) //
+        }
     }
 }
