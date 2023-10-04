@@ -57,7 +57,8 @@ namespace FormWithTestControls
             if (txtObj.Text.StartsWith(".")) { txtObj.Text = "0" + txtObj.Text;}
             if (txtObj.Text.EndsWith(".")) { txtObj.Text = txtObj.Text.Replace(".","");}
             string strTemp;
-           // strTemp = txtObj.Left(txtObj.Text.IndexOf(".")) //
+           //strTemp = txtObj.Left(txtObj.Text.IndexOf("."))//
         }
+
     }
 }
