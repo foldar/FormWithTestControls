@@ -55,6 +55,7 @@ namespace FormWithTestControls
         private void txtFloat_Validating(object sender, CancelEventArgs e)
         {
             TextBox txtObj = sender as TextBox;
+            //testchange
             //string strTemp;
             //strTemp = Convert.ToString(Convert.ToDouble(txtObj.Text));
             //txtObj.Text = strTemp;
