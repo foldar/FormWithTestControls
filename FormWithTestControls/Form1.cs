@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -18,6 +19,34 @@ namespace FormWithTestControls
             InitializeComponent();
         }
 
+        private class mclsItem
+        {
+            private long ID { get; set; }
+            private string ComboboxText { get; set; }
+        }
+
+        private class mclsComboboxItems
+        {
+            private List<mclsItem> mclsItems;
+
+            public void AddItem(mclsItem mclsitem)
+            {
+                mclsItems.Add(mclsitem);
+            }
+
+            //Dit is een property (geen parameter)
+            public long Count
+            {
+                get => mclsItems.Count;
+            }
+
+            // Property met parameter is niet mogelijk in C#. Daarom is het hier een functie.
+            public mclsItem Item(int index)
+            {
+                return mclsItems[index];
+            }
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -25,12 +54,12 @@ namespace FormWithTestControls
 
         private void chkMale_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkMale.Checked == true && chkFemale.Checked == true) {chkFemale.Checked = false;}
+            if (chkYes.Checked == true && chkNo.Checked == true) {chkNo.Checked = false;}
         }
 
         private void chkFemale_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkMale.Checked == true && chkFemale.Checked == true) {chkMale.Checked = false;}
+            if (chkYes.Checked == true && chkNo.Checked == true) {chkYes.Checked = false;}
         }
 
         private void txtInteger_KeyPress(object sender, KeyPressEventArgs e)
@@ -61,6 +90,40 @@ namespace FormWithTestControls
             //txtObj.Text = strTemp;
             if (txtObj.Text.StartsWith(".")) { txtObj.Text = "0" + txtObj.Text; }
             if (txtObj.Text.EndsWith(".")) { txtObj.Text = txtObj.Text.Replace(".", ""); }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            FillCombobox();
+         }
+
+        private void FillCombobox()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString =
+              "Data Source=localhost;" +
+              "Initial Catalog=Northwind;" +
+              "Integrated Security=SSPI;";
+            try
+            {
+                conn.Open();
+                String sql = "Select TestID, TestDescription from dbo.TestDropdown ORDER BY TestDescription ASC";
+
+                SqlCommand command = new SqlCommand(sql, conn);
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    {
+                        while (reader.Read())
+                        {
+                  //          Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                //Console.WriteLine(e.ToString());
+            }
         }
     }
 }

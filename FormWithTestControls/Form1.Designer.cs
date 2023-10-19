@@ -36,8 +36,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.chkFemale = new System.Windows.Forms.CheckBox();
-            this.chkMale = new System.Windows.Forms.CheckBox();
+            this.chkNo = new System.Windows.Forms.CheckBox();
+            this.chkYes = new System.Windows.Forms.CheckBox();
             this.lblComboBox = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblFloat = new System.Windows.Forms.Label();
@@ -55,8 +55,8 @@
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.chkFemale);
-            this.panel1.Controls.Add(this.chkMale);
+            this.panel1.Controls.Add(this.chkNo);
+            this.panel1.Controls.Add(this.chkYes);
             this.panel1.Controls.Add(this.lblComboBox);
             this.panel1.Controls.Add(this.lblDate);
             this.panel1.Controls.Add(this.lblFloat);
@@ -127,28 +127,28 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // chkFemale
+            // chkNo
             // 
-            this.chkFemale.AutoSize = true;
-            this.chkFemale.Location = new System.Drawing.Point(85, 182);
-            this.chkFemale.Name = "chkFemale";
-            this.chkFemale.Size = new System.Drawing.Size(60, 17);
-            this.chkFemale.TabIndex = 6;
-            this.chkFemale.Text = "Female";
-            this.chkFemale.UseVisualStyleBackColor = true;
-            this.chkFemale.CheckedChanged += new System.EventHandler(this.chkFemale_CheckedChanged);
+            this.chkNo.AutoSize = true;
+            this.chkNo.Location = new System.Drawing.Point(85, 182);
+            this.chkNo.Name = "chkNo";
+            this.chkNo.Size = new System.Drawing.Size(40, 17);
+            this.chkNo.TabIndex = 6;
+            this.chkNo.Text = "No";
+            this.chkNo.UseVisualStyleBackColor = true;
+            this.chkNo.CheckedChanged += new System.EventHandler(this.chkFemale_CheckedChanged);
             // 
-            // chkMale
+            // chkYes
             // 
-            this.chkMale.AutoSize = true;
-            this.chkMale.Location = new System.Drawing.Point(17, 182);
-            this.chkMale.Name = "chkMale";
-            this.chkMale.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.chkMale.Size = new System.Drawing.Size(59, 17);
-            this.chkMale.TabIndex = 5;
-            this.chkMale.Text = "Male";
-            this.chkMale.UseVisualStyleBackColor = true;
-            this.chkMale.CheckedChanged += new System.EventHandler(this.chkMale_CheckedChanged);
+            this.chkYes.AutoSize = true;
+            this.chkYes.Location = new System.Drawing.Point(17, 182);
+            this.chkYes.Name = "chkYes";
+            this.chkYes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.chkYes.Size = new System.Drawing.Size(54, 17);
+            this.chkYes.TabIndex = 5;
+            this.chkYes.Text = "Yes";
+            this.chkYes.UseVisualStyleBackColor = true;
+            this.chkYes.CheckedChanged += new System.EventHandler(this.chkMale_CheckedChanged);
             // 
             // lblComboBox
             // 
@@ -208,6 +208,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -224,8 +225,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.CheckBox chkFemale;
-        private System.Windows.Forms.CheckBox chkMale;
+        private System.Windows.Forms.CheckBox chkNo;
+        private System.Windows.Forms.CheckBox chkYes;
         private System.Windows.Forms.Label lblComboBox;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblFloat;
