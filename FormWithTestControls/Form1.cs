@@ -29,7 +29,7 @@ namespace FormWithTestControls
 
         private class clsComboboxItems
         {
-            private List<clsItem> mclsItems;
+            private List<clsItem> mclsItems = new List<clsItem>();
 
             public void AddItem(clsItem mclsitem)
             {
@@ -86,7 +86,6 @@ namespace FormWithTestControls
         private void txtFloat_Validating(object sender, CancelEventArgs e)
         {
             TextBox txtObj = sender as TextBox;
-            //testchange
             //string strTemp;
             //strTemp = Convert.ToString(Convert.ToDouble(txtObj.Text));
             //txtObj.Text = strTemp;
@@ -118,7 +117,6 @@ namespace FormWithTestControls
                         while (reader.Read())
                         {
                             clsItem clsitem = new clsItem();
-                            //clsitem = new mclsItem();
                             clsitem.ID = reader.GetInt32(0);
                             clsitem.ComboboxText = reader.GetString(1);
                             mclsComboboxItems.AddItem(clsitem);
