@@ -14,22 +14,24 @@ namespace FormWithTestControls
 {
     public partial class Form1 : Form
     {
+        private clsComboboxItems mclsComboboxItems=new clsComboboxItems();
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private class mclsItem
+        private class clsItem
         {
-            private long ID { get; set; }
-            private string ComboboxText { get; set; }
+            public long ID { get; set; }
+            public string ComboboxText { get; set; }
         }
 
-        private class mclsComboboxItems
+        private class clsComboboxItems
         {
-            private List<mclsItem> mclsItems;
+            private List<clsItem> mclsItems;
 
-            public void AddItem(mclsItem mclsitem)
+            public void AddItem(clsItem mclsitem)
             {
                 mclsItems.Add(mclsitem);
             }
@@ -41,7 +43,7 @@ namespace FormWithTestControls
             }
 
             // Property met parameter is niet mogelijk in C#. Daarom is het hier een functie.
-            public mclsItem Item(int index)
+            public clsItem Item(int index)
             {
                 return mclsItems[index];
             }
@@ -95,7 +97,7 @@ namespace FormWithTestControls
         private void Form1_Load(object sender, EventArgs e)
         {
             FillCombobox();
-         }
+        }
 
         private void FillCombobox()
         {
@@ -115,14 +117,17 @@ namespace FormWithTestControls
                     {
                         while (reader.Read())
                         {
-                  //          Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                            clsItem clsitem = new clsItem();
+                            //clsitem = new mclsItem();
+                            clsitem.ID = reader.GetInt32(0);
+                            clsitem.ComboboxText = reader.GetString(1);
+                            mclsComboboxItems.AddItem(clsitem);
                         }
                     }
                 }
             }
             catch (SqlException e)
             {
-                //Console.WriteLine(e.ToString());
             }
         }
     }
