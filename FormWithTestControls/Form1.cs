@@ -16,7 +16,8 @@ namespace FormWithTestControls
     public partial class Form1 : Form
     {
         private clsComboboxItems mclsComboboxItems=new clsComboboxItems();
-
+        private clsForm mclsForm = new clsForm();
+    
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +27,16 @@ namespace FormWithTestControls
         {
             public long ID { get; set; }
             public string ComboboxText { get; set; }
+        }
+
+        private class clsForm
+        {
+            public string Text { get; set; }
+            public int? Integer { get; set; }
+            public double? Float { get; set; }
+            public DateTime? Date { get; set; }
+            public int? ComboID { get; set; }
+            public bool? YesNo { get; set; }
         }
 
         private class clsComboboxItems
