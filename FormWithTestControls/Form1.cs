@@ -17,10 +17,13 @@ namespace FormWithTestControls
     {
         private clsComboboxItems mclsComboboxItems=new clsComboboxItems();
         private clsForm mclsForm = new clsForm();
-    
+        string mstrDecimalPoint;
+
         public Form1()
         {
             InitializeComponent();
+            System.Globalization.CultureInfo ci = System.Globalization.CultureInfo.CurrentUICulture;
+            mstrDecimalPoint = ci.NumberFormat.NumberDecimalSeparator;
         }
 
         private class clsItem
@@ -84,6 +87,7 @@ namespace FormWithTestControls
         private void txtFloat_KeyPress(object sender, KeyPressEventArgs e)
         {
             string st = "0123456789." + (char)8;
+
             System.Windows.Forms.TextBox txtObj = sender as System.Windows.Forms.TextBox;
             if (st.IndexOf(e.KeyChar) == -1)
             {
@@ -103,6 +107,8 @@ namespace FormWithTestControls
             //txtObj.Text = strTemp;
             if (txtObj.Text.StartsWith(".")) { txtObj.Text = "0" + txtObj.Text; }
             if (txtObj.Text.EndsWith(".")) { txtObj.Text = txtObj.Text.Replace(".", ""); }
+
+            mclsForm.Float = Convert.ToDouble(txtObj.Text.Replace(".", mstrDecimalPoint));
         }
 
         private void Form1_Load(object sender, EventArgs e)
