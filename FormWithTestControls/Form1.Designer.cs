@@ -33,7 +33,7 @@
             this.txtFloat = new System.Windows.Forms.TextBox();
             this.txtInteger = new System.Windows.Forms.TextBox();
             this.txtText = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCombobox = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.chkNo = new System.Windows.Forms.CheckBox();
@@ -52,7 +52,7 @@
             this.panel1.Controls.Add(this.txtFloat);
             this.panel1.Controls.Add(this.txtInteger);
             this.panel1.Controls.Add(this.txtText);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cmbCombobox);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.chkNo);
@@ -72,7 +72,7 @@
             this.dateTimePicker1.CustomFormat = "DD-MMM-YYYY";
             this.dateTimePicker1.Location = new System.Drawing.Point(146, 118);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(130, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 13;
             this.dateTimePicker1.Value = new System.DateTime(2022, 11, 28, 0, 0, 0, 0);
             // 
@@ -80,7 +80,7 @@
             // 
             this.txtFloat.Location = new System.Drawing.Point(142, 81);
             this.txtFloat.Name = "txtFloat";
-            this.txtFloat.Size = new System.Drawing.Size(135, 20);
+            this.txtFloat.Size = new System.Drawing.Size(200, 20);
             this.txtFloat.TabIndex = 12;
             this.txtFloat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFloat_KeyPress);
             this.txtFloat.Validating += new System.ComponentModel.CancelEventHandler(this.txtFloat_Validating);
@@ -89,7 +89,7 @@
             // 
             this.txtInteger.Location = new System.Drawing.Point(142, 50);
             this.txtInteger.Name = "txtInteger";
-            this.txtInteger.Size = new System.Drawing.Size(135, 20);
+            this.txtInteger.Size = new System.Drawing.Size(200, 20);
             this.txtInteger.TabIndex = 11;
             this.txtInteger.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInteger_KeyPress);
             // 
@@ -97,16 +97,17 @@
             // 
             this.txtText.Location = new System.Drawing.Point(142, 23);
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(135, 20);
+            this.txtText.Size = new System.Drawing.Size(200, 20);
             this.txtText.TabIndex = 10;
             // 
-            // comboBox1
+            // cmbCombobox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(147, 152);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(131, 21);
-            this.comboBox1.TabIndex = 9;
+            this.cmbCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCombobox.FormattingEnabled = true;
+            this.cmbCombobox.Location = new System.Drawing.Point(147, 152);
+            this.cmbCombobox.Name = "cmbCombobox";
+            this.cmbCombobox.Size = new System.Drawing.Size(200, 21);
+            this.cmbCombobox.TabIndex = 9;
             // 
             // btnExit
             // 
@@ -222,7 +223,7 @@
         private System.Windows.Forms.TextBox txtFloat;
         private System.Windows.Forms.TextBox txtInteger;
         private System.Windows.Forms.TextBox txtText;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCombobox;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.CheckBox chkNo;

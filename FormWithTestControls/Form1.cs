@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FormWithTestControls
 {
@@ -72,7 +73,7 @@ namespace FormWithTestControls
         private void txtFloat_KeyPress(object sender, KeyPressEventArgs e)
         {
             string st = "0123456789." + (char)8;
-            TextBox txtObj = sender as TextBox;
+            System.Windows.Forms.TextBox txtObj = sender as System.Windows.Forms.TextBox;
             if (st.IndexOf(e.KeyChar) == -1)
             {
                e.Handled = true;
@@ -85,7 +86,7 @@ namespace FormWithTestControls
 
         private void txtFloat_Validating(object sender, CancelEventArgs e)
         {
-            TextBox txtObj = sender as TextBox;
+            System.Windows.Forms.TextBox txtObj = sender as System.Windows.Forms.TextBox;
             //string strTemp;
             //strTemp = Convert.ToString(Convert.ToDouble(txtObj.Text));
             //txtObj.Text = strTemp;
@@ -126,6 +127,13 @@ namespace FormWithTestControls
             }
             catch (SqlException e)
             {
+            }
+            cmbCombobox.Items.Clear();
+            //Add an empty on top (NULL)
+            cmbCombobox.Items.Add("");
+            for (int i = 1; i <= mclsComboboxItems.Count; i++)
+            {
+                cmbCombobox.Items.Add(mclsComboboxItems.Item(i-1).ComboboxText);
             }
         }
     }
