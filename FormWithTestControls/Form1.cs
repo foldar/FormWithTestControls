@@ -34,6 +34,7 @@ namespace FormWithTestControls
 
         private class clsForm
         {
+            public bool? New { get; set; }
             public bool? Changed { get; set; }
             public string Text { get; set; }
             public int? Integer { get; set; }
