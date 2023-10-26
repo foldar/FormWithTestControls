@@ -92,6 +92,7 @@
             this.txtInteger.Size = new System.Drawing.Size(200, 20);
             this.txtInteger.TabIndex = 11;
             this.txtInteger.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInteger_KeyPress);
+            this.txtInteger.Validating += new System.ComponentModel.CancelEventHandler(this.txtInteger_Validating);
             // 
             // txtText
             // 
@@ -127,9 +128,9 @@
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkNo
-            // 
+            //
             this.chkNo.AutoSize = true;
             this.chkNo.Location = new System.Drawing.Point(85, 182);
             this.chkNo.Name = "chkNo";
@@ -137,10 +138,10 @@
             this.chkNo.TabIndex = 6;
             this.chkNo.Text = "No";
             this.chkNo.UseVisualStyleBackColor = true;
-            this.chkNo.CheckedChanged += new System.EventHandler(this.chkFemale_CheckedChanged);
-            // 
+            this.chkNo.CheckedChanged += new System.EventHandler(this.chkNo_CheckedChanged);
+            //
             // chkYes
-            // 
+            //
             this.chkYes.AutoSize = true;
             this.chkYes.Location = new System.Drawing.Point(17, 182);
             this.chkYes.Name = "chkYes";
@@ -149,7 +150,7 @@
             this.chkYes.TabIndex = 5;
             this.chkYes.Text = "Yes";
             this.chkYes.UseVisualStyleBackColor = true;
-            this.chkYes.CheckedChanged += new System.EventHandler(this.chkMale_CheckedChanged);
+            this.chkYes.CheckedChanged += new System.EventHandler(this.chkYes_CheckedChanged);
             // 
             // lblComboBox
             // 

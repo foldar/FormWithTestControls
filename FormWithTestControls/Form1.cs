@@ -34,6 +34,7 @@ namespace FormWithTestControls
 
         private class clsForm
         {
+            public bool? Changed { get; set; }
             public string Text { get; set; }
             public int? Integer { get; set; }
             public double? Float { get; set; }
@@ -69,19 +70,27 @@ namespace FormWithTestControls
             this.Close();
         }
 
-        private void chkMale_CheckedChanged(object sender, EventArgs e)
+        private void chkYes_CheckedChanged(object sender, EventArgs e)
         {
             if (chkYes.Checked == true && chkNo.Checked == true) {chkNo.Checked = false;}
         }
 
-        private void chkFemale_CheckedChanged(object sender, EventArgs e)
+        private void chkNo_CheckedChanged(object sender, EventArgs e)
         {
             if (chkYes.Checked == true && chkNo.Checked == true) {chkYes.Checked = false;}
+
         }
 
         private void txtInteger_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back))) {e.Handled = true;}
+        }
+
+        private void txtInteger_Validating(object sender, CancelEventArgs e)
+        {
+            System.Windows.Forms.TextBox txtObj = sender as System.Windows.Forms.TextBox;
+            if (txtObj.Text == "") { mclsForm.Integer = null; }
+            else { mclsForm.Integer = Convert.ToInt32(txtObj.Text); }
         }
 
         private void txtFloat_KeyPress(object sender, KeyPressEventArgs e)
@@ -108,7 +117,8 @@ namespace FormWithTestControls
             if (txtObj.Text.StartsWith(".")) { txtObj.Text = "0" + txtObj.Text; }
             if (txtObj.Text.EndsWith(".")) { txtObj.Text = txtObj.Text.Replace(".", ""); }
 
-            mclsForm.Float = Convert.ToDouble(txtObj.Text.Replace(".", mstrDecimalPoint));
+            if (txtObj.Text == "") {mclsForm.Float = null;}
+            else {mclsForm.Float = Convert.ToDouble(txtObj.Text.Replace(".", mstrDecimalPoint));}
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -153,5 +163,6 @@ namespace FormWithTestControls
                 cmbCombobox.Items.Add(mclsComboboxItems.Item(i-1).ComboboxText);
             }
         }
+
     }
 }
