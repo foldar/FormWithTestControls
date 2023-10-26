@@ -22,6 +22,7 @@ namespace FormWithTestControls
         public Form1()
         {
             InitializeComponent();
+            mclsForm.YesNo = null;
             System.Globalization.CultureInfo ci = System.Globalization.CultureInfo.CurrentUICulture;
             mstrDecimalPoint = ci.NumberFormat.NumberDecimalSeparator;
         }
