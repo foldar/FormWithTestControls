@@ -74,12 +74,15 @@ namespace FormWithTestControls
         private void chkYes_CheckedChanged(object sender, EventArgs e)
         {
             if (chkYes.Checked == true && chkNo.Checked == true) {chkNo.Checked = false;}
+            if (chkYes.Checked == true) { mclsForm.YesNo = true; }
+            else { if (chkNo.Checked == true) { mclsForm.YesNo = false; } else { mclsForm.YesNo = null; } }
         }
 
         private void chkNo_CheckedChanged(object sender, EventArgs e)
         {
             if (chkYes.Checked == true && chkNo.Checked == true) {chkYes.Checked = false;}
-
+            if (chkYes.Checked == true) { mclsForm.YesNo = true; }
+            else { if (chkNo.Checked == true) { mclsForm.YesNo = false; } else { mclsForm.YesNo = null; } }
         }
 
         private void txtInteger_KeyPress(object sender, KeyPressEventArgs e)
