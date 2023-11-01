@@ -129,7 +129,10 @@ namespace FormWithTestControls
         private void dateTimePicker1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
-            { dateTimePicker1.CustomFormat = " "; }
+            { 
+                dateTimePicker1.CustomFormat = " ";
+                mclsForm.Date = null;
+            }
             else
             { dateTimePicker1.CustomFormat = "dd/MMM/yyyy"; }
         }
@@ -137,6 +140,10 @@ namespace FormWithTestControls
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
+            if (dateTimePicker1.CustomFormat == " ")
+            { mclsForm.Date = null; }
+            else 
+            { mclsForm.Date = dateTimePicker1.Value; }
         }
 
         private void Form1_Load(object sender, EventArgs e)
