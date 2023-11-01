@@ -126,6 +126,19 @@ namespace FormWithTestControls
             else {mclsForm.Float = Convert.ToDouble(txtObj.Text.Replace(".", mstrDecimalPoint));}
         }
 
+        private void dateTimePicker1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            { dateTimePicker1.CustomFormat = " "; }
+            else
+            { dateTimePicker1.CustomFormat = "dd/MMM/yyyy"; }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             FillCombobox();
@@ -168,6 +181,5 @@ namespace FormWithTestControls
                 cmbCombobox.Items.Add(mclsComboboxItems.Item(i-1).ComboboxText);
             }
         }
-
     }
 }

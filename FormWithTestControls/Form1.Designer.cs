@@ -69,12 +69,15 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "DD-MMM-YYYY";
+            this.dateTimePicker1.CustomFormat = " ";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(146, 118);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 13;
             this.dateTimePicker1.Value = new System.DateTime(2022, 11, 28, 0, 0, 0, 0);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker1_KeyDown);
             // 
             // txtFloat
             // 
@@ -128,9 +131,9 @@
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkNo
-            //
+            // 
             this.chkNo.AutoSize = true;
             this.chkNo.Location = new System.Drawing.Point(85, 182);
             this.chkNo.Name = "chkNo";
@@ -139,9 +142,9 @@
             this.chkNo.Text = "No";
             this.chkNo.UseVisualStyleBackColor = true;
             this.chkNo.CheckedChanged += new System.EventHandler(this.chkNo_CheckedChanged);
-            //
+            // 
             // chkYes
-            //
+            // 
             this.chkYes.AutoSize = true;
             this.chkYes.Location = new System.Drawing.Point(17, 182);
             this.chkYes.Name = "chkYes";
