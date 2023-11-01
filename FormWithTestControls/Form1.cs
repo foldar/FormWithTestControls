@@ -29,7 +29,7 @@ namespace FormWithTestControls
 
         private class clsItem
         {
-            public long ID { get; set; }
+            public int ID { get; set; }
             public string ComboboxText { get; set; }
         }
 
@@ -144,6 +144,14 @@ namespace FormWithTestControls
             { mclsForm.Date = null; }
             else 
             { mclsForm.Date = dateTimePicker1.Value; }
+        }
+
+        private void cmbCombobox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmbCombobox.SelectedIndex == 0)
+            { mclsForm.ComboID = null; }
+            else
+            { mclsForm.ComboID = mclsComboboxItems.Item(cmbCombobox.SelectedIndex).ID; }
         }
 
         private void Form1_Load(object sender, EventArgs e)

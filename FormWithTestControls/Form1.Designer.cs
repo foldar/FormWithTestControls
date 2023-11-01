@@ -112,6 +112,7 @@
             this.cmbCombobox.Name = "cmbCombobox";
             this.cmbCombobox.Size = new System.Drawing.Size(200, 21);
             this.cmbCombobox.TabIndex = 9;
+            this.cmbCombobox.SelectionChangeCommitted += new System.EventHandler(this.cmbCombobox_SelectionChangeCommitted);
             // 
             // btnExit
             // 
