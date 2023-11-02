@@ -31,8 +31,19 @@ namespace FormWithTestControls
 
         private class clsItem
         {
-            public int ID { get; set; }
-            public string ComboboxText { get; set; }
+            private int intID;
+            public int ID
+            {
+                get { return intID; }
+                set { intID=value; }
+            }
+
+            private string strComboboxText;
+            public string ComboboxText 
+            {
+                get {return strComboboxText; }
+                set {strComboboxText=value; } 
+            }
         }
 
         private class clsForm
@@ -290,6 +301,7 @@ namespace FormWithTestControls
 //                                dateTimePicker1.Value = Convert.ToDateTime(mclsForm.TestDate);
 //                            }
                             mclsForm.TestComboID = reader.GetInt32(5);
+                            SelectComboBox();
                             mclsForm.TestYesNo = reader.GetBoolean(6);
                             if (mclsForm.TestYesNo == true) { chkYes.Checked = true; }
                             else                            { chkNo.Checked = true; }                          mclsForm.Changed = false;
@@ -310,6 +322,19 @@ namespace FormWithTestControls
                 mclsForm.TestDate = null;
                 mclsForm.TestComboID = null;
                 mclsForm.TestYesNo = null;
+            }
+        }
+
+        private void SelectComboBox()
+        {
+            if (mclsForm.TestID == null) { cmbCombobox.SelectedIndex = 0; }
+            else
+            {
+                for (int i = 1; i <= mclsComboboxItems.Count - 1; i++)
+                {
+                    if (mclsComboboxItems.Item(i).ID == mclsForm.TestComboID)
+                    { cmbCombobox.SelectedIndex = i+1; break; }
+                }
             }
         }
     }
