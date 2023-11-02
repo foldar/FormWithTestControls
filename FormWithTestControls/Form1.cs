@@ -57,12 +57,48 @@ namespace FormWithTestControls
                 get { return intTestID; }
                 set { intTestID = value; }
             }
-            public string TestText { get; set; }
-            public int? TestInteger { get; set; }
-            public double? TestFloat { get; set; }
-            public DateTime? TestDate { get; set; }
-            public int? TestComboID { get; set; }
-            public bool? TestYesNo { get; set; }
+
+            private string strTestText;
+            public string TestText
+            {
+                get {return strTestText; }
+                set {strTestText=value; }
+            }
+
+            private int? intTestInteger;
+            public int? TestInteger 
+            {
+                get {return intTestInteger; }
+                set {intTestInteger = value; }
+            }
+
+            private double? intTestFloat;
+            public double? TestFloat 
+            {
+                get { return intTestFloat; }
+                set { intTestFloat = value; } 
+            }
+
+            private DateTime? datTestDate;
+            public DateTime? TestDate 
+            {
+                get {return datTestDate; }
+                set {datTestDate = value; } 
+            }
+
+            private int? intTestComboID;
+            public int? TestComboID 
+            {
+                get {return intTestComboID; }
+                set {intTestComboID = value; } 
+            }
+
+            private bool? booTestYesNo;
+            public bool? TestYesNo 
+            {
+                get {return booTestYesNo; }
+                set {booTestYesNo = value; }
+            }
         }
 
         private class clsComboboxItems
