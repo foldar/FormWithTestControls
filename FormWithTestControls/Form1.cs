@@ -290,8 +290,10 @@ namespace FormWithTestControls
                             }
                             mclsForm.TestComboID = reader.GetInt32(5);
                             mclsForm.TestYesNo = reader.GetBoolean(6);
-                            mclsForm.Changed = false;
+                            if (mclsForm.TestYesNo == true) { chkYes.Checked = true; }
+                            else                            { chkNo.Checked = true; }                          mclsForm.Changed = false;
                             mclsForm.New = false;
+                            mclsForm.Changed = false;
                         }
                     }
                 }
