@@ -281,11 +281,12 @@ namespace FormWithTestControls
                             mclsForm.TestFloat = reader.GetFloat(3);
                             txtFloat.Text = Convert.ToString(mclsForm.TestFloat);
                             mclsForm.TestDate = reader.GetDateTime(4);
-                            if (mclsForm.TestDate = null)
-                            { }
+                            if (mclsForm.TestDate == null)
+                            { dateTimePicker1.CustomFormat= " ";}
                             else
                             {
-                                dateTimePicker1.Value = mclsForm.TestDate;
+                                dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
+                                dateTimePicker1.Value = Convert.ToDateTime(mclsForm.TestDate);
                             }
                             mclsForm.TestComboID = reader.GetInt32(5);
                             mclsForm.TestYesNo = reader.GetBoolean(6);
