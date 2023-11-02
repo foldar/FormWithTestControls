@@ -72,11 +72,11 @@ namespace FormWithTestControls
                 set {intTestInteger = value; }
             }
 
-            private double? intTestFloat;
-            public double? TestFloat 
+            private float? floTestFloat;
+            public float? TestFloat 
             {
-                get { return intTestFloat; }
-                set { intTestFloat = value; } 
+                get { return floTestFloat; }
+                set { floTestFloat = value; } 
             }
 
             private DateTime? datTestDate;
@@ -179,7 +179,7 @@ namespace FormWithTestControls
             if (txtObj.Text.EndsWith(".")) { txtObj.Text = txtObj.Text.Replace(".", ""); }
 
             if (txtObj.Text == "") {mclsForm.TestFloat = null;}
-            else {mclsForm.TestFloat = Convert.ToDouble(txtObj.Text.Replace(".", mstrDecimalPoint));}
+            else {mclsForm.TestFloat = Convert.ToSingle(txtObj.Text.Replace(".", mstrDecimalPoint));}
         }
 
         private void dateTimePicker1_KeyDown(object sender, KeyEventArgs e)
@@ -279,15 +279,15 @@ namespace FormWithTestControls
                             mclsForm.TestInteger = reader.GetInt32(2);
                             txtInteger.Text = Convert.ToString(mclsForm.TestInteger);
                             mclsForm.TestFloat = reader.GetFloat(3);
-                            txtFloat.Text = Convert.ToString(mclsForm.TestFloat);
-                            mclsForm.TestDate = reader.GetDateTime(4);
-                            if (mclsForm.TestDate == null)
-                            { dateTimePicker1.CustomFormat= " ";}
-                            else
-                            {
-                                dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
-                                dateTimePicker1.Value = Convert.ToDateTime(mclsForm.TestDate);
-                            }
+                            txtFloat.Text = Convert.ToString(mclsForm.TestFloat).Replace(",",".");
+//                            mclsForm.TestDate = reader.GetDateTime(4);
+//                            if (mclsForm.TestDate == null)
+//                            { dateTimePicker1.CustomFormat= " ";}
+//                            else
+//                            {
+//                                dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
+//                                dateTimePicker1.Value = Convert.ToDateTime(mclsForm.TestDate);
+//                            }
                             mclsForm.TestComboID = reader.GetInt32(5);
                             mclsForm.TestYesNo = reader.GetBoolean(6);
                             if (mclsForm.TestYesNo == true) { chkYes.Checked = true; }
