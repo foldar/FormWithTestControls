@@ -280,6 +280,7 @@ namespace FormWithTestControls
                             txtInteger.Text = Convert.ToString(mclsForm.TestInteger);
                             mclsForm.TestFloat = reader.GetFloat(3);
                             txtFloat.Text = Convert.ToString(mclsForm.TestFloat).Replace(",",".");
+//                          doesnt work cant put datetime in datetime?
 //                            mclsForm.TestDate = reader.GetDateTime(4);
 //                            if (mclsForm.TestDate == null)
 //                            { dateTimePicker1.CustomFormat= " ";}

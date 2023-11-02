@@ -43,11 +43,13 @@
             this.lblFloat = new System.Windows.Forms.Label();
             this.lblInteger = new System.Windows.Forms.Label();
             this.lblText = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.txtFloat);
             this.panel1.Controls.Add(this.txtInteger);
@@ -116,7 +118,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(130, 288);
+            this.btnExit.Location = new System.Drawing.Point(230, 290);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(89, 26);
             this.btnExit.TabIndex = 8;
@@ -126,7 +128,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(18, 291);
+            this.btnSave.Location = new System.Drawing.Point(18, 290);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(89, 24);
             this.btnSave.TabIndex = 7;
@@ -206,6 +208,15 @@
             this.lblText.TabIndex = 0;
             this.lblText.Text = "Text";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(123, 290);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 26);
+            this.btnDelete.TabIndex = 14;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,7 +224,7 @@
             this.ClientSize = new System.Drawing.Size(545, 355);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "TestForm";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -238,6 +249,7 @@
         private System.Windows.Forms.Label lblFloat;
         private System.Windows.Forms.Label lblInteger;
         private System.Windows.Forms.Label lblText;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
