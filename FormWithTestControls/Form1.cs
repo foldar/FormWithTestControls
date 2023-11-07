@@ -291,15 +291,16 @@ namespace FormWithTestControls
                             txtInteger.Text = Convert.ToString(mclsForm.TestInteger);
                             mclsForm.TestFloat = reader.GetFloat(3);
                             txtFloat.Text = Convert.ToString(mclsForm.TestFloat).Replace(",",".");
-//                          doesnt work cant put datetime in datetime?
-//                            mclsForm.TestDate = reader.GetDateTime(4);
-//                            if (mclsForm.TestDate == null)
-//                            { dateTimePicker1.CustomFormat= " ";}
-//                            else
-//                            {
-//                                dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
-//                                dateTimePicker1.Value = Convert.ToDateTime(mclsForm.TestDate);
-//                            }
+                            try
+                            {
+                                mclsForm.TestDate = (DateTime)reader.GetValue(4);
+                                mclsForm.TestDate = (DateTime)reader.GetValue(4);
+                            }
+                            catch (Exception e)
+                            {
+                                mclsForm.TestDate = null;
+                            }
+
                             mclsForm.TestComboID = reader.GetInt32(5);
                             SelectComboBox();
                             mclsForm.TestYesNo = reader.GetBoolean(6);
