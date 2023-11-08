@@ -90,12 +90,26 @@ namespace FormWithTestControls
                 set { floTestFloat = value; } 
             }
 
-            private DateTime? datTestDate;
-            public DateTime? TestDate 
+            private bool booTestDateEmpty;
+            public bool TestDateEmpty
             {
-                get {return datTestDate; }
-                set {datTestDate = value; } 
+                get { return booTestDateEmpty; }
+                set { booTestDateEmpty = value; }
             }
+
+            private DateTime datTestDate;
+            public DateTime TestDate
+            {
+                get { return datTestDate; }
+                set { datTestDate = value; }
+            }
+
+            //private DateTime? datTestDate;
+            //public DateTime? TestDate 
+            //{
+            //    get {return datTestDate; }
+            //    set {datTestDate = value; } 
+            //}
 
             private int? intTestComboID;
             public int? TestComboID 
@@ -198,7 +212,8 @@ namespace FormWithTestControls
             if (e.KeyCode == Keys.Delete)
             { 
                 dateTimePicker1.CustomFormat = " ";
-                mclsForm.TestDate = null;
+                mclsForm.TestDateEmpty = true;
+//                mclsForm.TestDate = null;
             }
             else
             { dateTimePicker1.CustomFormat = "dd/MMM/yyyy"; }
@@ -208,9 +223,15 @@ namespace FormWithTestControls
         {
             dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
             if (dateTimePicker1.CustomFormat == " ")
-            { mclsForm.TestDate = null; }
+            { 
+ //                mclsForm.TestDate = null;
+                mclsForm.TestDateEmpty = true;
+            }
             else 
-            { mclsForm.TestDate = dateTimePicker1.Value; }
+            {
+                mclsForm.TestDateEmpty = false;
+                mclsForm.TestDate = dateTimePicker1.Value; 
+            }
         }
 
         private void cmbCombobox_SelectionChangeCommitted(object sender, EventArgs e)
@@ -285,27 +306,90 @@ namespace FormWithTestControls
                         while (reader.Read())
                         {
                             mclsForm.TestID = reader.GetInt32(0);
-                            mclsForm.TestText = reader.GetString(1);
+                            try
+                            {
+                                mclsForm.TestText = reader.GetString(1);
+                            }
+                            catch
+                            {
+                                mclsForm.TestText = "";
+                            }
                             txtText.Text = mclsForm.TestText;
-                            mclsForm.TestInteger = reader.GetInt32(2);
+                            try
+                            {
+                                mclsForm.TestInteger = reader.GetInt32(2);
+                            }
+                            catch
+                            {
+                                mclsForm.TestInteger = null;
+                            }
                             txtInteger.Text = Convert.ToString(mclsForm.TestInteger);
-                            mclsForm.TestFloat = reader.GetFloat(3);
+                            try 
+                            {
+                                mclsForm.TestFloat = reader.GetFloat(3);
+                            }
+                            catch
+                            { 
+                                mclsForm.TestFloat = null;
+                            }
                             txtFloat.Text = Convert.ToString(mclsForm.TestFloat).Replace(",",".");
+                            //try
+                            //{
+                            //    mclsForm.TestDate = (DateTime)reader.GetSqlDateTime(4);
+                            //    mclsForm.TestDate = (DateTime)reader.GetSqlDateTime(4);
+                            //}
+                            //catch (Exception e)
+                            //{
+                            //    mclsForm.TestDate = null;
+                            //}
+
                             try
                             {
                                 mclsForm.TestDate = (DateTime)reader.GetValue(4);
-                                mclsForm.TestDate = (DateTime)reader.GetValue(4);
+                                mclsForm.TestDateEmpty = false;
+                                dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
+                                dateTimePicker1.Value=mclsForm.TestDate;
                             }
                             catch (Exception e)
                             {
-                                mclsForm.TestDate = null;
+                                mclsForm.TestDateEmpty = true;
+                                dateTimePicker1.CustomFormat = " ";
                             }
 
-                            mclsForm.TestComboID = reader.GetInt32(5);
+                            try
+                            {
+                                mclsForm.TestComboID = reader.GetInt32(5);
+                            }
+                            catch
+                            {
+                                mclsForm.TestComboID = null;
+                            }
                             SelectComboBox();
-                            mclsForm.TestYesNo = reader.GetBoolean(6);
-                            if (mclsForm.TestYesNo == true) { chkYes.Checked = true; }
-                            else                            { chkNo.Checked = true; }                          mclsForm.Changed = false;
+                            try
+                            {
+                                mclsForm.TestYesNo = reader.GetBoolean(6);
+                            }
+                            catch
+                            {
+                                mclsForm.TestYesNo = null;
+                            }
+                            if (mclsForm.TestYesNo == true) 
+                                { 
+                                    chkYes.Checked = true; 
+                                    chkNo.Checked = false;
+                                }
+                            else
+                                if (mclsForm.TestYesNo == false)
+                                {
+                                    chkYes.Checked = false;
+                                    chkNo.Checked = true;
+                                }
+                                else
+                                    { 
+                                        chkYes.Checked = false;
+                                        chkNo.Checked = false;
+                                    }
+                            mclsForm.Changed = false;
                             mclsForm.New = false;
                             mclsForm.Changed = false;
                         }
@@ -320,7 +404,7 @@ namespace FormWithTestControls
                 mclsForm.TestText = "";
                 mclsForm.TestInteger = null;
                 mclsForm.TestFloat = null;
-                mclsForm.TestDate = null;
+                mclsForm.TestDateEmpty = true;
                 mclsForm.TestComboID = null;
                 mclsForm.TestYesNo = null;
             }
