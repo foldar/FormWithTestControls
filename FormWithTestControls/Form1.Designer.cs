@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.txtFloat = new System.Windows.Forms.TextBox();
             this.txtInteger = new System.Windows.Forms.TextBox();
@@ -43,7 +44,6 @@
             this.lblFloat = new System.Windows.Forms.Label();
             this.lblInteger = new System.Windows.Forms.Label();
             this.lblText = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,6 +68,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(530, 331);
             this.panel1.TabIndex = 0;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(123, 290);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 26);
+            this.btnDelete.TabIndex = 14;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
@@ -105,6 +114,7 @@
             this.txtText.Name = "txtText";
             this.txtText.Size = new System.Drawing.Size(200, 20);
             this.txtText.TabIndex = 10;
+            this.txtText.TextChanged += new System.EventHandler(this.txtText_TextChanged);
             // 
             // cmbCombobox
             // 
@@ -207,15 +217,6 @@
             this.lblText.Size = new System.Drawing.Size(38, 13);
             this.lblText.TabIndex = 0;
             this.lblText.Text = "Text";
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(123, 290);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(89, 26);
-            this.btnDelete.TabIndex = 14;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

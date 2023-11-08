@@ -48,15 +48,15 @@ namespace FormWithTestControls
 
         private class clsForm
         {
-            private bool? booNew;
-            public bool? New 
+            private bool booNew;
+            public bool New 
             {
                 get { return booNew; }
                 set { booNew = value; }
             }
 
-            private bool? booChanged;
-            public bool? Changed
+            private bool booChanged;
+            public bool Changed
             {
                 get { return booChanged; }
                 set { booChanged = value; }
@@ -153,11 +153,18 @@ namespace FormWithTestControls
             this.Close();
         }
 
+        private void txtText_TextChanged(object sender, EventArgs e)
+        {
+            mclsForm.Changed = true;
+            btnSave.Enabled = true;
+        }
         private void chkYes_CheckedChanged(object sender, EventArgs e)
         {
             if (chkYes.Checked == true && chkNo.Checked == true) {chkNo.Checked = false;}
             if (chkYes.Checked == true) { mclsForm.TestYesNo = true; }
             else { if (chkNo.Checked == true) { mclsForm.TestYesNo = false; } else { mclsForm.TestYesNo = null; } }
+            mclsForm.Changed = true;
+            btnSave.Enabled = true;
         }
 
         private void chkNo_CheckedChanged(object sender, EventArgs e)
@@ -165,11 +172,21 @@ namespace FormWithTestControls
             if (chkYes.Checked == true && chkNo.Checked == true) {chkYes.Checked = false;}
             if (chkYes.Checked == true) { mclsForm.TestYesNo = true; }
             else { if (chkNo.Checked == true) { mclsForm.TestYesNo = false; } else { mclsForm.TestYesNo = null; } }
+            mclsForm.Changed = true;
+            btnSave.Enabled = true;
         }
 
         private void txtInteger_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back))) {e.Handled = true;}
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                mclsForm.Changed = true;
+                btnSave.Enabled = true;
+            }
         }
 
         private void txtInteger_Validating(object sender, CancelEventArgs e)
@@ -192,6 +209,11 @@ namespace FormWithTestControls
             {
                 e.Handled = true;
             }
+            if (e.Handled==false)
+            {
+                mclsForm.Changed = true;
+                btnSave.Enabled = true;
+            }
         }
 
         private void txtFloat_Validating(object sender, CancelEventArgs e)
@@ -213,10 +235,14 @@ namespace FormWithTestControls
             { 
                 dateTimePicker1.CustomFormat = " ";
                 mclsForm.TestDateEmpty = true;
-//                mclsForm.TestDate = null;
+                //                mclsForm.TestDate = null;
             }
             else
-            { dateTimePicker1.CustomFormat = "dd/MMM/yyyy"; }
+            { 
+                dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
+            }
+            mclsForm.Changed = true;
+            btnSave.Enabled = true;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -232,6 +258,8 @@ namespace FormWithTestControls
                 mclsForm.TestDateEmpty = false;
                 mclsForm.TestDate = dateTimePicker1.Value; 
             }
+            mclsForm.Changed = true;
+            btnSave.Enabled = true;
         }
 
         private void cmbCombobox_SelectionChangeCommitted(object sender, EventArgs e)
@@ -240,6 +268,8 @@ namespace FormWithTestControls
             { mclsForm.TestComboID = null; }
             else
             { mclsForm.TestComboID = mclsComboboxItems.Item(cmbCombobox.SelectedIndex).ID; }
+            mclsForm.Changed = true;
+            btnSave.Enabled = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -393,6 +423,9 @@ namespace FormWithTestControls
                             mclsForm.New = false;
                             mclsForm.Changed = false;
                         }
+                        btnDelete.Enabled = !mclsForm.New;
+                    // Always disabled when nothing has been changed yet
+                        btnSave.Enabled = false;
                     }
                 }
             }
