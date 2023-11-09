@@ -519,7 +519,16 @@ namespace FormWithTestControls
                 conn.Open();
                 //Must be a transaction so it can be committed.Without commit it doesent work.
                 SqlTransaction objTrans = conn.BeginTransaction();
-                String sql = "UPDATE dbo.TestTable";
+                String sql = "UPDATE dbo.TestTable SET TestText='" + mclsForm.TestText + "'";
+                sql = sql + ", TestInteger=" + mclsForm.TestInteger;
+                sql = sql + ", TestFloatingPoint=" + Convert.ToString(mclsForm.TestFloat).Replace(mstrDecimalPoint, ".");
+                sql = sql + ", TestCombobox=";
+                if (mclsForm.TestComboID == null) { sql = sql + "NULL"; } else { sql = sql + mclsForm.TestComboID; }
+                sql = sql + ", TestYesNo=";
+                if (mclsForm.TestYesNo == null) { sql = sql + "NULL"; } else { sql = sql + Convert.ToInt16(mclsForm.TestYesNo); }
+                sql = sql + ", TestDate=";
+                if (mclsForm.TestDateEmpty == true) { sql = sql + "NULL"; } else { sql = sql + "'" + mclsForm.TestDate.ToString("MM/dd/yyyy") + "'"; }
+                sql = sql + " WHERE TestID=" + mclsForm.TestID;
 
                 SqlCommand command = new SqlCommand(sql, conn);
                 command.Transaction = objTrans;
@@ -530,6 +539,7 @@ namespace FormWithTestControls
             }
             catch (SqlException e)
             {
+                String sql = "UPDATE dbo.TestTable SET TestText='" + mclsForm.TestText + "'";
             }
         }
 
@@ -546,7 +556,11 @@ namespace FormWithTestControls
                 //Must be a transaction so it can be committed.Without commit it doesent work.
                 SqlTransaction objTrans = conn.BeginTransaction();
                 String sql = "INSERT INTO dbo.TestTable (TestID, TestText, TestInteger, TestFloatingPoint, TestCombobox, TestYesNo, TestDate)";
-                sql = sql + " VALUES (0, '" + mclsForm.TestText + "', " + mclsForm.TestInteger + ", " + Convert.ToString(mclsForm.TestFloat).Replace(mstrDecimalPoint, ".") + ", " + mclsForm.TestComboID + ", ";
+                sql = sql + " VALUES (" + mclsForm.TestID + ", '" + mclsForm.TestText + "', " + mclsForm.TestInteger + ", " + Convert.ToString(mclsForm.TestFloat).Replace(mstrDecimalPoint, ".") + ", ";
+                if (mclsForm.TestComboID == null)
+                { sql = sql + "NULL, "; }
+                else { sql = sql + mclsForm.TestComboID + ", "; }
+                sql = sql + mclsForm.TestComboID + ", ";
                 if (mclsForm.TestYesNo == null)
                 { sql = sql + "NULL"; }
                 else { sql = sql + Convert.ToInt16(mclsForm.TestYesNo); }
@@ -560,7 +574,6 @@ namespace FormWithTestControls
             }
             catch (SqlException e)
             {
-                String sql = "INSERT INTO dbo.TestTable (TestID, TestText, TestInteger, TestFloatingPoint, TestCombobox, TestYesNo, TestDate) VALUES (0, 'a', 1, 2.76,5,true,'1999/02/01')";
             }
         }
     }
