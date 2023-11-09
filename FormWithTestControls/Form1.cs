@@ -124,6 +124,32 @@ namespace FormWithTestControls
                 get {return booTestYesNo; }
                 set {booTestYesNo = value; }
             }
+
+            public void DeleteRecord()
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString =
+                  "Data Source=localhost;" +
+                  "Initial Catalog=Northwind;" +
+                  "Integrated Security=SSPI;";
+                try
+                {
+                    conn.Open();
+                    //Must be a transaction so it can be committed.Without commit it doesent work.
+                    SqlTransaction objTrans = conn.BeginTransaction();
+                    String sql = "DELETE FROM dbo.TestTable";
+
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    command.Transaction = objTrans;
+                    {
+                        command.ExecuteNonQuery();
+                        objTrans.Commit();
+                    }
+                }
+                catch (SqlException e)
+                {
+                }
+            }
         }
 
         private class clsComboboxItems
@@ -454,6 +480,12 @@ namespace FormWithTestControls
                     { cmbCombobox.SelectedIndex = i+1; break; }
                 }
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            mclsForm.DeleteRecord();
+            FillForm();
         }
     }
 }
