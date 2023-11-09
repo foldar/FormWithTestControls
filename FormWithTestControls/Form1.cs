@@ -150,6 +150,7 @@ namespace FormWithTestControls
                 {
                 }
             }
+
         }
 
         private class clsComboboxItems
@@ -181,6 +182,7 @@ namespace FormWithTestControls
 
         private void txtText_TextChanged(object sender, EventArgs e)
         {
+            mclsForm.TestText= txtText.Text;
             mclsForm.Changed = true;
             btnSave.Enabled = true;
         }
@@ -486,6 +488,80 @@ namespace FormWithTestControls
         {
             mclsForm.DeleteRecord();
             FillForm();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveRecord();
+        }
+
+        public void SaveRecord()
+        {
+            if (mclsForm.New == false)
+            { 
+                UpdateRecord(); 
+            }
+            else
+            { 
+                InsertRecord(); 
+            }
+        }
+
+        private void UpdateRecord()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString =
+              "Data Source=localhost;" +
+              "Initial Catalog=Northwind;" +
+              "Integrated Security=SSPI;";
+            try
+            {
+                conn.Open();
+                //Must be a transaction so it can be committed.Without commit it doesent work.
+                SqlTransaction objTrans = conn.BeginTransaction();
+                String sql = "UPDATE dbo.TestTable";
+
+                SqlCommand command = new SqlCommand(sql, conn);
+                command.Transaction = objTrans;
+                {
+                    command.ExecuteNonQuery();
+                    objTrans.Commit();
+                }
+            }
+            catch (SqlException e)
+            {
+            }
+        }
+
+        private void InsertRecord()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString =
+              "Data Source=localhost;" +
+              "Initial Catalog=Northwind;" +
+              "Integrated Security=SSPI;";
+            try
+            {
+                conn.Open();
+                //Must be a transaction so it can be committed.Without commit it doesent work.
+                SqlTransaction objTrans = conn.BeginTransaction();
+                String sql = "INSERT INTO dbo.TestTable (TestID, TestText, TestInteger, TestFloatingPoint, TestCombobox, TestYesNo, TestDate)";
+                sql = sql + " VALUES (0, '" + mclsForm.TestText + "', " + mclsForm.TestInteger + ", " + Convert.ToString(mclsForm.TestFloat).Replace(mstrDecimalPoint, ".") + ", " + mclsForm.TestComboID + ", ";
+                if (mclsForm.TestYesNo == null)
+                { sql = sql + "NULL"; }
+                else { sql = sql + Convert.ToInt16(mclsForm.TestYesNo); }
+                sql = sql + ",'" + mclsForm.TestDate.ToString("MM/dd/yyyy") + "')";
+                SqlCommand command = new SqlCommand(sql, conn);
+                command.Transaction = objTrans;
+                {
+                    command.ExecuteNonQuery();
+                    objTrans.Commit();
+                }
+            }
+            catch (SqlException e)
+            {
+                String sql = "INSERT INTO dbo.TestTable (TestID, TestText, TestInteger, TestFloatingPoint, TestCombobox, TestYesNo, TestDate) VALUES (0, 'a', 1, 2.76,5,true,'1999/02/01')";
+            }
         }
     }
 }
